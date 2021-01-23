@@ -1,0 +1,12 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Nuppy" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/material_red400</item>
+        <item name="colorPrimaryVariant">@color/material_red700</item>
+        <item name="colorOnPrimary">@color/md_white</item>
+        <item name="colorSecondary">@color/material_redA200</item>
+        <item name="colorSecondaryVariant">@color/material_redA700</item>
+        <item name="colorOnSecondary">@color/md_black</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+    </style>
+</resources>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+    <variable
+        name="preview"
+        type="com.mega4tech.linkpreview.LinkPreview" />
+    </data>
+
+    <LinearLayout
+        android:layout_margin="-32dp"
+        android:padding="@dimen/padding_default"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:id="@+id/linkCard"
+            app:cardBackgroundColor="?attr/colorPrimaryVariant"
+            app:cardElevation="0dp"
+            app:cardCornerRadius="@dimen/radius_default"
+            android:layout_height="150dp">
+
+            <ImageView
+                android:id="@+id/linkImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/suitbackground" />
+
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:layout_gravity="center"
+                android:id="@+id/loadingLink"
+                app:trackCornerRadius="@dimen/radius_default"
+                android:indeterminate="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+        </com.google.android.material.card.MaterialCardView>
+        <LinearLayout
+            android:padding="@dimen/padding_small"
+            android:orientation="vertical"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/linkTitle"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                tools:text="Terno masculino"
+                android:text="@{preview.title}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/linkUrl"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                tools:text="www.suits.com.br"
+                android:text="@{preview.siteName}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</layout>

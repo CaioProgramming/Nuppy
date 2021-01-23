@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "473591220490",
+    "project_id": "nuppy-d",
+    "storage_bucket": "nuppy-d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:473591220490:android:8c5979df2d1398f70352f3",
+        "android_client_info": {
+          "package_name": "com.ilustris.nuppy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "473591220490-9duedsbm0f7mhmb3lt4l0i64unj1chs5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ilustris.nuppy",
+            "certificate_hash": "e52ea948ad8eb3370c325822e60b1550052192ac"
+          }
+        },
+        {
+          "client_id": "473591220490-2rqeu62bu1s482qcerg68vj1f6bn0nao.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcYrfYiGorBBm2az97zijcboCFfd4e8Yg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "473591220490-2rqeu62bu1s482qcerg68vj1f6bn0nao.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
