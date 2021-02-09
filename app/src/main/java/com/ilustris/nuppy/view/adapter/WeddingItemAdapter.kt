@@ -1,35 +1,51 @@
 package com.ilustris.nuppy.view.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.ilustris.animations.*
 import com.ilustris.nuppy.R
+import com.ilustris.nuppy.bean.ListType
 import com.ilustris.nuppy.bean.WeddingItem
-import com.ilustris.nuppy.databinding.LinkItemsLayoutBinding
-import com.ilustris.nuppy.databinding.LinkPreviewDialogBinding
+import com.ilustris.nuppy.databinding.GridItemLayoutBinding
+import com.ilustris.nuppy.databinding.TextItemLayoutBinding
+import com.ilustris.nuppy.view.ItemWebViewActivity
 import com.mega4tech.linkpreview.GetLinkPreviewListener
 import com.mega4tech.linkpreview.LinkPreview
 import com.mega4tech.linkpreview.LinkUtil
-import com.silent.ilustriscore.core.utilities.fadeOut
+import com.silent.ilustriscore.core.utilities.*
 import java.lang.Exception
 
-class WeddingItemAdapter(val weddingItems: List<WeddingItem>): RecyclerView.Adapter<WeddingItemAdapter.WeddingViewHolder>() {
+class WeddingItemAdapter(private val listType: ListType,private val weddingItems: List<WeddingItem>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-
-
-
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeddingViewHolder {
-        return WeddingViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.link_items_layout,parent,false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return if (listType == ListType.GRID_LIST) {
+            GridViewHolder(
+                DataBindingUtil.inflate(
+                    LayoutInflater.from(parent.context),
+                    R.layout.grid_item_layout,
+                    parent,
+                    false
+                )
+            )
+        } else {
+            TextViewHolder(
+                DataBindingUtil.inflate(
+                    LayoutInflater.from(parent.context),
+                    R.layout.text_item_layout,
+                    parent,
+                    false
+                )
+            )
+        }
     }
 
-    override fun onBindViewHolder(holder: WeddingViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (position < weddingItems.size) {
-            holder.bindData(weddingItems[position])
+            if (listType == ListType.GRID_LIST) (holder as GridViewHolder).bindData(weddingItems[position]) else (holder as TextViewHolder).bindData(weddingItems[position])
         }
     }
 
@@ -37,33 +53,51 @@ class WeddingItemAdapter(val weddingItems: List<WeddingItem>): RecyclerView.Adap
        return weddingItems.count()
     }
 
-
-    inner class WeddingViewHolder(private val linkItemsLayoutBinding: LinkItemsLayoutBinding): RecyclerView.ViewHolder(linkItemsLayoutBinding.root), GetLinkPreviewListener {
+    inner class GridViewHolder(private val gridItemLayoutBinding: GridItemLayoutBinding): RecyclerView.ViewHolder(gridItemLayoutBinding.root), GetLinkPreviewListener {
 
         fun bindData(weddingItem: WeddingItem) {
-            val context = linkItemsLayoutBinding.root.context
+            val context = gridItemLayoutBinding.root.context
             LinkUtil.getInstance().getLinkPreview(context, weddingItem.link,this)
-
+            gridItemLayoutBinding.linkCard.apply {
+                isEnabled = false
+                setOnClickListener {
+                    ItemWebViewActivity.showItemLink(it.context,weddingItem)
+                }
+            }
         }
 
-        private fun LinkItemsLayoutBinding.setupLink(preview: LinkPreview){
+        private fun GridItemLayoutBinding.setupLink(preview: LinkPreview){
             (root.context as AppCompatActivity).runOnUiThread {
                 Glide.with(root.context).load(preview.imageFile).into(this.linkImage)
                 this.preview = preview
                 this.loadingLink.fadeOut()
+                this.linkImage.fadeIn()
+                this.itemTitle.fadeIn()
+                this.linkCard.isEnabled = true
             }
         }
 
         override fun onSuccess(preview: LinkPreview?) {
            preview?.let {
-               linkItemsLayoutBinding.setupLink(preview)
+               gridItemLayoutBinding.setupLink(preview)
            }
         }
 
-        override fun onFailed(p0: Exception?) {
-
+        override fun onFailed(e: Exception?) {
+            e?.printStackTrace()
+            (itemView.context as AppCompatActivity).runOnUiThread {
+                this.gridItemLayoutBinding.linkCard.slideOutLeft()
+            }
         }
 
     }
+
+    inner class TextViewHolder(private val textItemLayoutBinding: TextItemLayoutBinding) : RecyclerView.ViewHolder(textItemLayoutBinding.root) {
+        fun bindData(weddingItem: WeddingItem) {
+            textItemLayoutBinding.weddItem = weddingItem
+            textItemLayoutBinding.root.slideInBottom()
+        }
+    }
+
 
 }

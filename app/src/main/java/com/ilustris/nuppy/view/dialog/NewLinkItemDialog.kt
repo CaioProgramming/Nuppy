@@ -10,18 +10,23 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.ilustris.animations.fadeIn
+import com.ilustris.animations.fadeOut
+import com.ilustris.animations.popIn
 import com.ilustris.nuppy.R
-import com.ilustris.nuppy.databinding.LinkItemsLayoutBinding
+import com.ilustris.nuppy.bean.ListType
+import com.ilustris.nuppy.databinding.GridItemLayoutBinding
 import com.ilustris.nuppy.databinding.LinkPreviewDialogBinding
 import com.mega4tech.linkpreview.GetLinkPreviewListener
 import com.mega4tech.linkpreview.LinkPreview
 import com.mega4tech.linkpreview.LinkUtil
-import com.silent.ilustriscore.core.utilities.fadeOut
+import com.silent.ilustriscore.core.utilities.gone
 
 
-class NewLinkItemDialog : BottomSheetDialogFragment(),GetLinkPreviewListener {
+class NewLinkItemDialog : BottomSheetDialogFragment(), GetLinkPreviewListener {
 
-    var onSaveItem: ((String, String) -> Unit)? = null
+    var onSaveItem: ((String) -> Unit)? = null
+    var listType = ListType.GRID_LIST
     lateinit var linkPreviewDialogBinding: LinkPreviewDialogBinding
 
     override fun onCreateView(
@@ -34,31 +39,53 @@ class NewLinkItemDialog : BottomSheetDialogFragment(),GetLinkPreviewListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-      linkPreviewDialogBinding =  LinkPreviewDialogBinding.bind(view).apply{
-            linkEditText.addTextChangedListener {
-                validateLink(it.toString(), view.context)
+
+        linkPreviewDialogBinding =  LinkPreviewDialogBinding.bind(view).apply{
+            if (listType == ListType.GRID_LIST) {
+                linkEditText.addTextChangedListener {
+                    validateLink(it.toString(), view.context)
+                }
+            } else {
+                saveItemButton.setOnClickListener {
+                    onSaveItem?.invoke(linkPreviewDialogBinding.linkEditText.text.toString())
+                    dismiss()
+                }
+                linkEditText.hint = "Insira o nome de um item"
+                linkPreviewCard.linkCard.gone()
+                saveItemButton.isEnabled = true
             }
-            saveItemButton.setOnClickListener {
-                onSaveItem?.invoke(linkEditText.text.toString(), itemName.text.toString())
+
+
+            closeButton.apply {
+                setOnClickListener {
+                    dismiss()
+                }
             }
-      }
+        }
     }
 
     private fun validateLink(link: String, context: Context) {
         if (Patterns.WEB_URL.matcher(link).matches()) {
+            linkPreviewDialogBinding.closeButton.isEnabled = false
             LinkUtil.getInstance().getLinkPreview(context, link,this@NewLinkItemDialog)
+        } else {
+            Toast.makeText(context, "Insira um link válido", Toast.LENGTH_SHORT).show()
         }
 
     }
 
-    private fun LinkItemsLayoutBinding.setupLink(preview: LinkPreview){
+    private fun GridItemLayoutBinding.setupLink(preview: LinkPreview){
         requireActivity().runOnUiThread {
+            enableSaveButton(true)
             Glide.with(requireContext()).load(preview.imageFile).into(this.linkImage)
-            Toast.makeText(context, "Link sucessed get ${preview.title} \n ${preview.siteName} \n ${preview.link}", Toast.LENGTH_SHORT).show()
             this.preview = preview
             this.loadingLink.fadeOut()
             if (preview.title == null || preview.link == null) {
-                this.linkCard.fadeOut()
+                this.loadingLink.fadeIn()
+            } else {
+                this.loadingLink.fadeOut()
+                this.linkImage.fadeIn()
+                this.itemTitle.popIn()
             }
         }
     }
@@ -66,21 +93,42 @@ class NewLinkItemDialog : BottomSheetDialogFragment(),GetLinkPreviewListener {
 
     override fun onSuccess(linkPreview: LinkPreview?) {
         linkPreview?.let {
-            linkPreviewDialogBinding.preview.setupLink(it)
+            linkPreviewDialogBinding.linkPreviewCard.setupLink(it)
         }
     }
 
-    override fun onFailed(p0: java.lang.Exception?) {
-        requireActivity().runOnUiThread {
-            linkPreviewDialogBinding.linkEditText.error = "Link inválido"
+    private fun enableSaveButton(canSave: Boolean) {
+        linkPreviewDialogBinding.saveItemButton.isEnabled = true
+        linkPreviewDialogBinding.closeButton.isEnabled = true
+        if (canSave) {
+            linkPreviewDialogBinding.saveItemButton.setOnClickListener {
+                onSaveItem?.invoke(linkPreviewDialogBinding.linkEditText.text.toString())
+                dismiss()
+            }
+        } else {
+            linkPreviewDialogBinding.saveItemButton.text = "Cancelar"
+            dismiss()
+        }
+    }
+
+    override fun onFailed(e: java.lang.Exception?) {
+        e?.printStackTrace()
+        if (!this.isDetached) {
+            requireActivity().runOnUiThread {
+                linkPreviewDialogBinding.linkEditText.error = "Link inválido"
+                Toast.makeText(context, "Erro ao obter link", Toast.LENGTH_SHORT).show()
+                enableSaveButton(false)
+            }
         }
     }
 
     companion object {
 
-        fun newInstance(onSaveItem: ((String, String) -> Unit)): NewLinkItemDialog {
+        fun newInstance(listType: ListType,onSaveItem: ((String) -> Unit)): NewLinkItemDialog {
             return  NewLinkItemDialog().apply {
                 this.onSaveItem = onSaveItem
+                this.listType = listType
+                isCancelable = false
             }
         }
 

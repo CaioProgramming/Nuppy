@@ -53,11 +53,15 @@ android {
 
 dependencies {
     implementation project(':core')
+    implementation project(':animations')
     implementation 'gun0912.ted:tedbottompicker:2.0.1'
     implementation 'gun0912.ted:tedpermission-rx2:2.2.3'
     implementation 'com.github.veeyaarVR:SuperGradientTextView:1.1'
     implementation 'com.airbnb.android:lottie:3.6.0'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     kapt 'com.github.bumptech.glide:compiler:4.11.0'
     implementation 'com.github.omegaes:Android-Link-Preview:1.0.2'
     implementation 'com.vanniktech:emoji-ios:0.7.0'

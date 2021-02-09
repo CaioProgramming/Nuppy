@@ -2,23 +2,38 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <RelativeLayout
         android:padding="@dimen/padding_default"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+           android:id="@+id/loading"
+            android:layout_centerInParent="true"
+            app:indicatorColor="?attr/colorPrimaryVariant"
+            app:trackCornerRadius="@dimen/radius_small"
+            app:trackThickness="5dp"
+            android:indeterminate="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
         <com.airbnb.lottie.LottieAnimationView
+            android:layout_above="@id/message"
+            android:visibility="gone"
             android:id="@+id/animatedIcon"
             app:lottie_loop="true"
             app:lottie_repeatMode="reverse"
             app:lottie_autoPlay="true"
             app:lottie_rawRes="@raw/disconnected_animation"
             android:layout_width="match_parent"
-            android:layout_height="200dp"/>
+            android:layout_height="match_parent"/>
 
         <TextView
+            android:visibility="gone"
+            android:id="@+id/message"
             android:padding="@dimen/padding_default"
+            android:layout_above="@id/okButton"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:text="Você está desconectado, faça login para visualizar suas listas"
@@ -26,22 +41,17 @@
             android:layout_height="wrap_content"/>
 
         <com.google.android.material.button.MaterialButton
+            android:visibility="gone"
+            android:layout_alignParentBottom="true"
             android:id="@+id/okButton"
             android:text="Conectar"
             app:cornerRadius="@dimen/radius_default"
+            android:padding="@dimen/padding_default"
             app:backgroundTint="@color/material_blueA400"
             android:layout_width="match_parent"
+            app:elevation="0dp"
             android:layout_height="wrap_content"/>
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/cancelButton"
-            android:text="Cancelar"
-            app:cornerRadius="@dimen/radius_default"
-            android:textColor="?android:textColorHint"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
+    </RelativeLayout>
 
 
 </layout>

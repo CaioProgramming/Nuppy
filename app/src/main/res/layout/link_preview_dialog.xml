@@ -4,62 +4,63 @@
 
 
     <LinearLayout
-        android:padding="@dimen/padding_default"
-        android:animateLayoutChanges="true"
+         android:animateLayoutChanges="true"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:text="Adicionar novo item"
-            android:textStyle="bold"
-            android:textAlignment="center"
-            style="@style/TextAppearance.MaterialComponents.Headline5"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content">
+            <ImageButton
+                android:background="@color/transparent"
+                android:id="@+id/close_button"
+                android:layout_centerInParent="true"
+                android:layout_alignParentStart="true"
+                android:padding="@dimen/padding_default"
+                android:src="@drawable/ic_baseline_close_24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_toEndOf="@id/close_button"
+                android:id="@+id/title"
+                android:padding="@dimen/padding_default"
+                android:text="Adicionar novo item"
+                android:textStyle="bold"
+                android:background="@drawable/bottom_line"
+                android:backgroundTint="?android:textColorHint"
+                style="@style/TextAppearance.MaterialComponents.Headline5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-        <EditText
-            android:id="@+id/itemName"
-            android:hint="Nome do Item"
-            android:textAlignment="center"
-            android:textStyle="bold"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-            android:backgroundTint="@color/transparent"
+        </RelativeLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/linkEditText"
+            android:background="@drawable/stroke_round"
+            android:drawableEnd="@drawable/ic_baseline_link_24"
+            android:padding="@dimen/padding_default"
+            android:layout_margin="@dimen/margin_default"
+            android:hint="Insira um link válido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <com.google.android.material.textfield.TextInputLayout
-            app:endIconMode="clear_text"
-            app:endIconDrawable="@drawable/ic_baseline_close_24"
-            app:boxBackgroundMode="none"
-            android:layout_marginVertical="@dimen/padding_default"
-            android:inputType="textUri"
-            android:paddingTop="@dimen/padding_small"
-            android:hint="insira um link válido"
-            app:hintTextColor="@color/material_blue400"
-            app:expandedHintEnabled="false"
-            android:background="@drawable/round"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <com.google.android.material.textfield.TextInputEditText
-                android:padding="@dimen/padding_small"
-                android:id="@+id/linkEditText"
-                android:background="@color/transparent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
-
         <include
-            android:id="@+id/preview"
-            layout="@layout/link_items_layout" />
+            android:id="@+id/linkPreviewCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_default"
+            layout="@layout/grid_item_layout" />
 
         <com.google.android.material.button.MaterialButton
+            android:layout_margin="@dimen/margin_default"
             android:id="@+id/save_item_button"
             app:cornerRadius="@dimen/radius_default"
             android:text="Salvar item"
             app:elevation="0dp"
-            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-            app:backgroundTint="?attr/colorPrimaryVariant"
+            android:enabled="false"
             android:padding="@dimen/padding_default"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
