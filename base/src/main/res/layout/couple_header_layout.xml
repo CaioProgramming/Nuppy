@@ -1,0 +1,52 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/coupleAppbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:colorBackground"
+        app:elevation="0dp">
+
+        <com.google.android.material.appbar.SubtitleCollapsingToolbarLayout
+            android:id="@+id/couple_collapsetoolbar"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:collapsedSubtitleTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            app:collapsedTitleTextAppearance="@style/Theme.Nuppy.CollapseToolbarCollapsedTitle"
+            app:contentScrim="?listBackColor"
+            app:expandedSubtitleTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            app:expandedTitleGravity="center|bottom"
+            app:expandedTitleTextAppearance="@style/Theme.Nuppy.CollapseToolbarTitle"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:scrimAnimationDuration="200"
+            app:title=""
+            tools:subtitle="Juntos desde 18 de outubro de 2018"
+            tools:title="Caio e Debora">
+
+            <TextView
+                android:id="@+id/marriageText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:padding="@dimen/padding_small"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                android:textColor="?attr/colorPrimary"
+                android:textStyle="bold"
+                tools:text="Casamento em 10 de outubro de 2020" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/coupleToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin" />
+
+        </com.google.android.material.appbar.SubtitleCollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+</layout>

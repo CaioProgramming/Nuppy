@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/userpic"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:visibility="gone"
+        app:civ_border_color="?android:colorBackground"
+        app:civ_border_width="1dp"
+        app:civ_circle_background_color="?colorPrimaryVariant"
+        tools:showIn="@layout/couple_header_layout"
+        tools:src="@drawable/caiomoji"
+        tools:visibility="visible" />
+</layout>

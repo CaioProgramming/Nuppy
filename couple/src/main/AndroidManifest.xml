@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ilustris.couple">
+
+    <application android:theme="@style/Theme.Nuppy">
+        <activity android:name=".view.ShareCoupleActivity"></activity>
+        <activity android:name=".view.CoupleActivity" />
+    </application>
+
+</manifest>

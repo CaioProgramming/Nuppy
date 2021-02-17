@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <LinearLayout
+        android:id="@+id/notFoundCoupleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/colorPrimaryVariant"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_default">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            app:lottie_autoPlay="true"
+            app:lottie_colorFilter="@color/md_white"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/double_heart"
+            app:lottie_repeatMode="reverse"
+            app:lottie_scale="4" />
+
+        <TextView
+            android:id="@+id/couple_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Compartilhe o seu código de casamento para incluir seu parceiro no app! 😉 "
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            android:textColor="@color/material_grey100" />
+
+        <TextView
+            android:id="@+id/coupleIDText"
+            style="@style/TextAppearance.MaterialComponents.Headline5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/md_white"
+            android:textStyle="bold"
+            tools:text="g97hrXJLGmmnlxPCpcFC" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/shareWeddingButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/margin_big"
+            android:padding="@dimen/padding_default"
+            android:text="Compartilhar"
+            android:textColor="?attr/colorPrimaryVariant"
+            app:backgroundTint="@color/md_white"
+            app:cornerRadius="@dimen/radius_default" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/weddAlreadyButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Meu conjugue já usa o nuppy"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:cornerRadius="@dimen/radius_default" />
+
+
+    </LinearLayout>
+</layout>

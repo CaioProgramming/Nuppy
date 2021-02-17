@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Nuppy.CollapseToolbarTitle" parent="TextAppearance.Design.CollapsingToolbar.Expanded">
+        <item name="fontFamily">serif</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline4
+        </item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Theme.Nuppy.CollapseToolbarCollapsedTitle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="fontFamily">serif</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="Theme.Nuppy.Toolbar" parent="Ilustris.Toolbar">
+        <item name="fontFamily">serif</item>
+    </style>
+</resources>

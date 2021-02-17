@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="marriage_field_text">Casamento: <b>%1$s</b></string>
+    <string name="relationship_field_text">Aniversário de namoro: <b>%1$s</b></string>
+</resources>

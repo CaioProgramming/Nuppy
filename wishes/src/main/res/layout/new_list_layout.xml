@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <LinearLayout
+        android:theme="@style/Theme.Nuppy"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:padding="@dimen/padding_default"
+            android:text="Criar nova lista"
+            style="@style/TextAppearance.MaterialComponents.Headline4"
+            android:textStyle="bold"
+            android:background="@drawable/appbar_bottom_background"
+            android:textColor="?android:textColorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/itemName"
+            android:hint="Nome da lista"
+            style="@style/TextAppearance.MaterialComponents.Headline4"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="?android:textColorPrimary"
+            android:backgroundTint="@color/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="Tipo de lista"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:padding="@dimen/padding_default"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:padding="@dimen/padding_default"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/textListCard"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/material_grey500"
+                app:cardCornerRadius="@dimen/radius_default"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:padding="@dimen/padding_default"
+                    style="@style/TextAppearance.MaterialComponents.Caption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_list_text"
+                    android:drawablePadding="@dimen/padding_small"
+                    android:drawableTint="@color/md_white"
+                    android:gravity="center"
+                    android:text="Lista vertical"
+                    android:textColor="@color/md_white" />
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/gridListCard"
+                app:cardBackgroundColor="?attr/colorPrimaryVariant"
+                android:layout_marginHorizontal="@dimen/margin_default"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="@dimen/radius_default"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/TextAppearance.MaterialComponents.Caption"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_visualization"
+                    android:drawablePadding="@dimen/padding_small"
+                    android:drawableTint="@color/md_white"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_default"
+                    android:text="Lista em grid"
+                    android:layout_width="match_parent"
+                    android:textColor="@color/md_white" />
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/save_item_button"
+            app:cornerRadius="@dimen/radius_default"
+            android:layout_margin="@dimen/margin_default"
+            android:text="Salvar item"
+            app:elevation="0dp"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            app:backgroundTint="?attr/colorPrimaryVariant"
+            android:padding="@dimen/padding_default"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+    <variable
+        name="preview"
+        type="com.mega4tech.linkpreview.LinkPreview" />
+    </data>
+
+
+    <LinearLayout
+        android:gravity="center"
+        android:padding="@dimen/padding_small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:stateListAnimator="@animator/list_animator"
+            app:cardCornerRadius="@dimen/radius_default"
+            android:id="@+id/linkCard"
+            android:layout_height="150dp"
+            app:cardBackgroundColor="?android:colorBackground"
+            app:cardElevation="0dp">
+
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/loadingLink"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_repeatMode="reverse"
+                app:lottie_colorFilter="?android:textColorHint"
+                app:lottie_rawRes="@raw/searching"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/linkImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/suitbackground" />
+
+            <TextView
+                android:visibility="gone"
+                style="@style/TextAppearance.MaterialComponents.Caption"
+                android:id="@+id/itemTitle"
+                android:textColor="@color/md_white"
+                android:background="@drawable/fade_gradient_rotate_0"
+                android:padding="@dimen/padding_small"
+                android:maxLines="2"
+                tools:visibility="visible"
+                tools:text="Terno preto"
+                android:text="@{preview.title}"
+                android:layout_gravity="bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+
+</layout>

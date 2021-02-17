@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="weddItem"
+            type="com.ilustris.nuppy.bean.WishItem" />
+    </data>
+
+
+    <TextView
+        android:backgroundTint="?strokeColor"
+        android:layout_width="match_parent"
+        android:fontFamily="serif"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom_line"
+        android:maxLines="2"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        android:padding="@dimen/padding_default"
+        android:text="@{weddItem.link}"
+        tools:text="Franguinho frito" />
+
+</layout>

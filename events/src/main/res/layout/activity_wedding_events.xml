@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?android:colorBackground">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/coupleAppbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/appbar_bottom_background"
+            app:elevation="0dp">
+
+            <com.google.android.material.appbar.SubtitleCollapsingToolbarLayout
+                android:id="@+id/couple_collapsetoolbar"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:collapsedSubtitleTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                app:collapsedTitleTextAppearance="@style/Theme.Nuppy.CollapseToolbarCollapsedTitle"
+                app:contentScrim="?listBackColor"
+                app:expandedSubtitleTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                app:expandedTitleGravity="center|bottom"
+                app:expandedTitleTextAppearance="@style/Theme.Nuppy.CollapseToolbarTitle"
+                tools:subtitle="Since, 18 de Outubro de 2018"
+                tools:title="Caio e Debora">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/coupleToolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="parallax" />
+
+            </com.google.android.material.appbar.SubtitleCollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/nuppyRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+
+        <CalendarView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?listBackColor"
+            android:dateTextAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:weekDayTextAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            app:behavior_hideable="true"
+            app:behavior_peekHeight="50dp"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:id="@+id/couple_data_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="?attr/actionBarSize"
+        android:theme="@style/Theme.Nuppy">
+
+        <TextView
+            android:id="@+id/couple_setup_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/appbar_bottom_background"
+            android:padding="@dimen/padding_default"
+            android:text="Configurar casal"
+            android:textAppearance="@style/Ilustris.Title"
+            android:textStyle="bold" />
+
+        <include
+            android:id="@+id/userInfo"
+            layout="@layout/couple_user_info" />
+
+        <TextView
+            android:id="@+id/marriageDateText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:maxLines="2"
+            android:padding="@dimen/padding_small"
+            android:text="Data prevista de casamento:"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+
+        <EditText
+            android:id="@+id/coupleName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:hint="Nome do casal"
+            android:imeOptions="actionDone"
+            android:inputType="textAutoComplete"
+            android:lines="1"
+            android:maxLength="40"
+            android:padding="@dimen/padding_default"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/relationshipDateText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?selectableItemBackground"
+            android:gravity="center"
+            android:maxLines="2"
+            android:padding="@dimen/padding_small"
+            android:text="Juntos desde..."
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:columnCount="2"
+            android:orientation="vertical"
+            android:rowCount="2">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/relationshipDate"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_default"
+                android:stateListAnimator="@animator/list_animator"
+                app:cardBackgroundColor="?attr/listBackColor"
+                app:cardCornerRadius="@dimen/radius_default"
+                app:cardElevation="0dp">
+
+                <TextView
+                    style="@style/TextAppearance.MaterialComponents.Body1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawableTop="@drawable/ic_round_date_range_24"
+                    android:drawableTint="?attr/colorPrimaryVariant"
+                    android:padding="@dimen/padding_default"
+                    android:text="Aniv. namoro"
+                    android:textColor="?attr/colorPrimaryVariant" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/coupleNameCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_default"
+                android:stateListAnimator="@animator/list_animator"
+                android:visibility="gone"
+                app:cardBackgroundColor="?attr/listBackColor"
+                app:cardCornerRadius="@dimen/radius_default"
+                app:cardElevation="0dp"
+                tools:visibility="visible">
+
+                <TextView
+                    style="@style/TextAppearance.MaterialComponents.Body1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawableTop="@drawable/ic_newlyweds"
+                    android:drawableTint="?attr/colorPrimaryVariant"
+                    android:maxLines="1"
+                    android:padding="@dimen/padding_default"
+                    android:text="Nome do casal"
+                    android:textColor="?attr/colorPrimaryVariant" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/marriageDate"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_default"
+                android:stateListAnimator="@animator/list_animator"
+                app:cardBackgroundColor="?attr/listBackColor"
+                app:cardCornerRadius="@dimen/radius_default"
+                app:cardElevation="0dp">
+
+                <TextView
+                    style="@style/TextAppearance.MaterialComponents.Body1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawableTop="@drawable/ic_wedding_rings"
+                    android:drawableTint="?attr/colorPrimaryVariant"
+                    android:padding="@dimen/padding_default"
+                    android:text="Casamento"
+                    android:textColor="?attr/colorPrimaryVariant" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/shareCouple"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_default"
+                android:stateListAnimator="@animator/list_animator"
+                android:visibility="gone"
+                app:cardBackgroundColor="?attr/listBackColor"
+                app:cardCornerRadius="@dimen/radius_default"
+                app:cardElevation="0dp"
+                tools:visibility="visible">
+
+                <TextView
+                    style="@style/TextAppearance.MaterialComponents.Body1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawableTop="@drawable/ic_champagne_glass"
+                    android:drawableTint="@color/md_blue500"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_default"
+                    android:text="Adc parceiro"
+                    android:textAlignment="center"
+                    android:textColor="@color/md_blue500" />
+            </com.google.android.material.card.MaterialCardView>
+
+        </GridLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/saveWeddingInfoButton"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_big"
+                android:enabled="false"
+                android:paddingVertical="@dimen/padding_default"
+                android:text="Salvar informações" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/loading"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:visibility="gone"
+                app:lottie_colorFilter="@color/md_white"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/heart_beat_load"
+                app:lottie_repeatMode="reverse"
+                tools:visibility="visible" />
+
+        </RelativeLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/weddingAlreadyButton"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_big"
+            android:paddingVertical="@dimen/padding_default"
+            android:text="Parceiro já utiliza o nuppy" />
+
+
+    </LinearLayout>
+</layout>
